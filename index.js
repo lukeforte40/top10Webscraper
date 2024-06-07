@@ -2,10 +2,7 @@
 var numItems = 10;
 var i = 0;
 const { chromium } = require("playwright");
-const fs = require('fs')
-async function collect(){
-
-}
+const fs = require('fs');
 
 async function saveHackerNewsArticles() {
   // launch browser
@@ -33,9 +30,11 @@ async function saveHackerNewsArticles() {
   // aggregate csv data
   var csvData = "Title,Url\n";
   while (i < numItems) {
-    csvData = csvData + extractedTitles[i].title + ',' + extractedTitles[i].url + '\n';
+    let title = extractedTitles[i].title;
+    title = title.replace(/,/g, '');
+    csvData = csvData + title + ',' + extractedTitles[i].url + '\n';
     i++;
-  }
+  };
 
   // add csv data to csv file  
   fs.writeFile("list.csv",csvData, err => {if (err) throw err;});
