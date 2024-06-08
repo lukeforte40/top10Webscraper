@@ -16,7 +16,7 @@ async function saveHackerNewsArticles() {
   // ensure page load
   await page.waitForTimeout(1000);
 
-  // get data
+  // extract data
   const extractedTitles = await page.$$eval('.titleline', titles => {
     const arrayData = [];
     titles.forEach(titles => {
@@ -27,7 +27,7 @@ async function saveHackerNewsArticles() {
     return arrayData;
   });
 
-  // aggregate csv data
+  // aggregate data
   var csvData = "Title,Url\n";
   while (i < numItems) {
     let title = extractedTitles[i].title;

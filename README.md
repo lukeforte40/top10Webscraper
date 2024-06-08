@@ -1,0 +1,1 @@
+This project is a web scraper that goes to [Hacker News](https://news.ycombinator.com/) and saves the title and URL of the top 10 articles to a CSV file.
